@@ -26,7 +26,7 @@ async def main():
     os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
 
     tools = await client.get_tools()
-    model = ChatGroq(model = "llama-3.3-70b-versatile")
+    model = ChatGroq(model = "openai/gpt-oss-120b")
 
     agent = create_react_agent(
         model,tools
@@ -36,6 +36,14 @@ async def main():
         {"messages" : [{"role": "user" , "content" : "What is (10 + 10) x 12"}]}
     )
 
-    print("Math response:" , math_response['messages'][-1].content)
+    print("Math response:" , math_response['messages'][-1].pretty_print())
+
+    
+    weather_response = await agent.ainvoke(
+        {"messages" : [{"role": "user" , "content" : "What is weather in ahmedabad"}]}
+    )
+
+    print("weather response:" , weather_response['messages'][-1].pretty_print())
+
 
 asyncio.run(main())

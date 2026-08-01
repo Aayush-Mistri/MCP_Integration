@@ -6,7 +6,7 @@ mcp = FastMCP("Weather")
 async def add(location:str)->str:
     """_summary_
 
-        Get the weather locaion
+        for when user asks for whether related queries
 
     """
     return "It is sunny"
