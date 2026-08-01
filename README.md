@@ -1,0 +1,1 @@
+Guide for MCP integration
